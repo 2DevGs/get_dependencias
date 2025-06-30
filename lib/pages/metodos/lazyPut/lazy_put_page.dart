@@ -7,7 +7,13 @@ class LazyPutPage extends StatefulWidget {
 
   LazyPutPage({ super.key }){
     Get.lazyPut(() => LazyPutController());
+
+    // Mata a instancia- porém mantém a factory ativa dentro do Get fazendo com que
+    //  tenha a possibilidade de acessa-la de qualquer lugar para sempre dentro do Get.
     Get.lazyPut(() => LazyPutFenixController(), fenix: true);
+
+    // Mantém a instancia dentro do Get, sendo assim quando você pedir a classe
+    //ele retornar-a mesma instancia anterior!!!!
     // Get.put(LazyPutFenixController(), permanent: true);
   }
 

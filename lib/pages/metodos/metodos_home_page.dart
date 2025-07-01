@@ -30,6 +30,12 @@ class MetodosHomePage extends StatelessWidget {
               },
               child: const Text('putAsync'),
             ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed('/metodos/create');
+              },
+              child: const Text('Create'),
+            ),
           ],
         ),
       ),

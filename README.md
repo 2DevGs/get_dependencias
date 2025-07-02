@@ -1,16 +1,22 @@
-# get_dependencias
 
-A new Flutter project.
+## _GetX Dependency Management_
 
-## Getting Started
+In this project, I used basic structures to make dependency management as clear as possible. 
+But at the same time, making it clear what each control is managing.
 
-This project is a starting point for a Flutter application.
+The following packages were used:
+- GetX
+- SharedPreferences
 
-A few resources to get you started if this is your first Flutter project:
+## NOTES
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```dart
+sdk: ">=2.17.6 <3.0.0"
+flutter: 3.0.5
+get: ^4.6.5
+shared_preferences: ^2.1.1
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Tech
+
+- [VSCode](https://code.visualstudio.com/) - Visual Studio Code is a source code editor developed by Microsoft for Windows, Linux, and macOS. It includes support for debugging, built-in Git version control, syntax highlighting, intelligent code completion, snippets, and code refactoring. It is customizable, allowing users to change the editor's theme, shortcut keys, and preferences. It is free and open-source software, although the official download is under a proprietary license.

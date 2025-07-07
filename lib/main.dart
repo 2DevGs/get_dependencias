@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_dependencias/pages/basico/basico_home_page.dart';
-import 'package:get_dependencias/pages/home_page.dart';
-import 'package:get_dependencias/pages/metodos/create/create_home_page.dart';
-import 'package:get_dependencias/pages/metodos/delete_update/delete_home_page.dart';
-import 'package:get_dependencias/pages/metodos/delete_update/update_home_page.dart';
-import 'package:get_dependencias/pages/metodos/lazyPut/lazy_put_page.dart';
-import 'package:get_dependencias/pages/metodos/metodos_home_page.dart';
-import 'package:get_dependencias/pages/metodos/put/put_page.dart';
-import 'package:get_dependencias/pages/metodos/putAsync/put_async_page.dart';
+
+import 'pages/basico/basico_home_page.dart';
+import 'pages/bindings/bindings_controller.dart';
+import 'pages/bindings/bindings_example.dart';
+import 'pages/bindings/home_bindings.dart';
+import 'pages/home_page.dart';
+import 'pages/metodos/create/create_home_page.dart';
+import 'pages/metodos/delete_update/delete_home_page.dart';
+import 'pages/metodos/delete_update/update_home_page.dart';
+import 'pages/metodos/lazyPut/lazy_put_page.dart';
+import 'pages/metodos/metodos_home_page.dart';
+import 'pages/metodos/put/put_page.dart';
+import 'pages/metodos/putAsync/put_async_page.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -35,8 +39,26 @@ class MyApp extends StatelessWidget {
             GetPage(name: '/putAsync', page: () => PutAsyncPage(),),
             GetPage(name: '/create', page: () => CreateHomePage(),),
             GetPage(name: '/update', page: () => UpdateHomePage(),),
-            GetPage(name: '/delete', page: () => DeleteHomePage(),),
+            GetPage(name: '/delete', page: () => const DeleteHomePage(),),
           ],
+        ),
+        GetPage(
+          name: '/bindings',
+          binding: BindingsExample(),
+          page: () => const HomeBindings(),
+        ),
+        GetPage(
+          name: '/bindings_builder',
+          binding: BindingsBuilder(() {
+            Get.put(BindingsController(nome: 'Inicializado dentro do binding'));
+            }
+          ),
+          page: () => const HomeBindings(),
+        ),
+        GetPage(
+          name: '/bindings_builder_put',
+          binding: BindingsBuilder.put(() => BindingsController(nome: 'Inicializado dentro do bindings')),
+          page: () => const HomeBindings(),
         ),
       ],
     );

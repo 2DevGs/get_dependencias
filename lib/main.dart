@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_dependencias/pages/bindings/middleware_binding.dart';
 
 import 'pages/basico/basico_home_page.dart';
 import 'pages/bindings/bindings_controller.dart';
@@ -13,9 +14,11 @@ import 'pages/metodos/lazyPut/lazy_put_page.dart';
 import 'pages/metodos/metodos_home_page.dart';
 import 'pages/metodos/put/put_page.dart';
 import 'pages/metodos/putAsync/put_async_page.dart';
+
 void main() {
   runApp(const MyApp());
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
@@ -23,41 +26,62 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       getPages: [
         GetPage(
-          name: '/', 
+          name: '/',
           page: () => const HomePage(),
         ),
         GetPage(
-          name: '/basico', 
+          name: '/basico',
           page: () => BasicoHomePage(),
         ),
         GetPage(
-          name: '/metodos', 
+          name: '/metodos',
           page: () => const MetodosHomePage(),
           children: [
-            GetPage(name: '/put', page: () => const PutPage(),),
-            GetPage(name: '/lazyPut', page: () => LazyPutPage(),),
-            GetPage(name: '/putAsync', page: () => PutAsyncPage(),),
-            GetPage(name: '/create', page: () => CreateHomePage(),),
-            GetPage(name: '/update', page: () => UpdateHomePage(),),
-            GetPage(name: '/delete', page: () => const DeleteHomePage(),),
+            GetPage(
+              name: '/put',
+              page: () => const PutPage(),
+            ),
+            GetPage(
+              name: '/lazyPut',
+              page: () => LazyPutPage(),
+            ),
+            GetPage(
+              name: '/putAsync',
+              page: () => PutAsyncPage(),
+            ),
+            GetPage(
+              name: '/create',
+              page: () => CreateHomePage(),
+            ),
+            GetPage(
+              name: '/update',
+              page: () => UpdateHomePage(),
+            ),
+            GetPage(
+              name: '/delete',
+              page: () => const DeleteHomePage(),
+            ),
           ],
         ),
         GetPage(
           name: '/bindings',
           binding: BindingsExample(),
+          middlewares: [
+            MiddlewareBinding(),
+          ],
           page: () => const HomeBindings(),
         ),
         GetPage(
           name: '/bindings_builder',
           binding: BindingsBuilder(() {
             Get.put(BindingsController(nome: 'Inicializado dentro do binding'));
-            }
-          ),
+          }),
           page: () => const HomeBindings(),
         ),
         GetPage(
           name: '/bindings_builder_put',
-          binding: BindingsBuilder.put(() => BindingsController(nome: 'Inicializado dentro do bindings')),
+          binding: BindingsBuilder.put(() =>
+              BindingsController(nome: 'Inicializado dentro do bindings')),
           page: () => const HomeBindings(),
         ),
       ],

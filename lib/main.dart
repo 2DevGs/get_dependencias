@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_dependencias/pages/bindings/middleware_binding.dart';
+import 'package:get_dependencias/pages/initialBinding/initial_binding.dart';
+import 'package:get_dependencias/pages/initialBinding/initial_bindings_page.dart';
 
 import 'pages/basico/basico_home_page.dart';
 import 'pages/bindings/bindings_controller.dart';
@@ -24,6 +26,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      initialBinding: InitialBinding(),
       getPages: [
         GetPage(
           name: '/',
@@ -83,6 +86,10 @@ class MyApp extends StatelessWidget {
           binding: BindingsBuilder.put(() =>
               BindingsController(nome: 'Inicializado dentro do bindings')),
           page: () => const HomeBindings(),
+        ),
+        GetPage(
+          name: '/initial_binding',
+          page: () => const InitialBindingsPage(),
         ),
       ],
     );

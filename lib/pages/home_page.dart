@@ -59,6 +59,12 @@ class HomePage extends StatelessWidget {
               },
               child: const Text('Bindings with unamed routes'),
             ),
+            TextButton(
+              onPressed: () {
+                Get.toNamed('/initial_binding');
+              },
+              child: const Text('Initial Binding'),
+            ),
           ],
         ),
       ),
